@@ -40,9 +40,8 @@ export default function LandingPage() {
       <nav className="flex justify-between items-center px-6 py-4 relative z-20 bg-white/55 backdrop-blur-md rounded-b-md">
         <h1 className="text-2xl font-bold text-black">Wallpaperz</h1>
         <div className="space-x-4">
-          <Link to="/categories" className="hover:text-blue-300 text-black">Categories</Link>
-          <Link to="/upload" className="hover:text-blue-300 text-black" >Upload</Link>
-          <Link to="/login" className="hover:text-blue-300 text-black">Login</Link>
+          <Link to="/login" className="hover:text-shadow-black text-black">Login</Link>
+          <Link to='/signup' className='hover:text-shadow-black text-black'>Signup</Link>
         </div>
       </nav>
 
