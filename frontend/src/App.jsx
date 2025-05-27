@@ -5,11 +5,13 @@ import LoginPage from "./pages/LoginPage"
 import SignupPage from "./pages/SignupPage"
 import AboutPage from "./pages/About"
 import UploadWallpaperForm from "./pages/Upload"
+import LandingPage2 from "./pages/LandingPage2"
 
 function App() {
   return (<>
   <BrowserRouter>
     <Routes>
+      <Route exact path='/lp2' element={<LandingPage2/>}/>
       <Route exact path='/' element={<LandingPage/>}/>
       <Route exact path="/login" element={<LoginPage/>}/>
       <Route exact path='/signup' element={<SignupPage/>}/>
