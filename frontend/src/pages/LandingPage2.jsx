@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 
 export default function LandingPage2() {
   const images = [
-    "https://wallpapers.com/images/hd/4k-android-blue-green-shore-z3cftk0apksilm31.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK5JMUKynWNp9W09jSchaq1rKPCDghOnCiug&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdOi7FVB3avk8GMEuTOAI3Ty9VSVV0JTgXw&s",
-    "https://images.unsplash.com/photo-1500817487388-039e623edc21?fm=jpg&q=60&w=3000",
+    "https://i.pinimg.com/736x/2f/55/1c/2f551c9d3129929fc794ae6181abbe41.jpg",
+    "https://i.pinimg.com/736x/67/64/68/6764681f045254f9f6b10c1a0872db4f.jpg",
+    "https://i.pinimg.com/736x/4b/2b/f1/4b2bf1b03186f8a169e31ff53bd8b5df.jpg",
+    "https://i.pinimg.com/564x/c3/6f/df/c36fdf6f58dd9cc4c5912ad7e6030371.jpg",
+    "https://i.pinimg.com/736x/7c/53/53/7c5353fd1bb39fba01bfc4cebfda62d7.jpg",
+    "https://i.pinimg.com/1200x/3e/f1/9d/3ef19db1bf547e3aca71fa7ca5ded071.jpg",
+    "https://i.pinimg.com/736x/3c/b6/3d/3cb63dd352fe452b88c560e201925797.jpg",
+    "https://i.pinimg.com/originals/f3/fa/8e/f3fa8ecc2c3d924135086fe3b3b0836a.jpg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,11 +18,12 @@ export default function LandingPage2() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    },2000);
     return () => clearInterval(interval);
   }, [images.length]);
 
   const getIndex = (offset) => {
+    console.log((currentIndex + offset + images.length) % images.length)
     return (currentIndex + offset + images.length) % images.length;
   };
 
@@ -41,7 +46,7 @@ export default function LandingPage2() {
               key={i}
               src={images[i]}
               alt={`Wallpaper ${i}`}
-              className={`object-cover transition-all duration-700 rounded-xl shadow-lg ${
+              className={`object-cover transition-all duration-300 rounded-xl shadow-lg ${
                 idx === 1
                   ? "w-[300px] h-[600px] scale-105 z-10"
                   : "w-[150px] h-[300px] opacity-50 blur-sm"
