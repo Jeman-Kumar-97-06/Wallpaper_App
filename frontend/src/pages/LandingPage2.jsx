@@ -59,7 +59,7 @@ export default function LandingPage2() {
         <h2 className="discov text-shadow-lg text-4xl z-10 sm:text-5xl font-extrabold mt-3 mb-4"><span className="text-blue-500">Discover</span> & <span className="text-green-500">Share</span> <span className="text-red-500">Stunning</span> <span className="text-white">Wallpapers</span></h2>
         <p className="text-shadow-lg text-lg z-10 font-bold text-white mb-8">Browse, upload, and download stunning mobile wallpapers — all in one place.</p>
         
-        <Link to="/login" className="bg-black text-white font-bold px-6 py-3 rounded-full text-lg hover:bg-blue-800 transition">Explore Wallpapers</Link>
+        <Link to="/home" className="bg-black text-white font-bold px-6 py-3 rounded-full text-lg hover:bg-blue-800 transition">Explore Wallpapers</Link>
       </div>
 
       {/* Footer */}
