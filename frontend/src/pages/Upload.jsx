@@ -10,7 +10,15 @@ export default function UploadWallpaperForm() {
         <form className="space-y-4">
           <input type="text" placeholder="Title" className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none" />
           <input type="text" placeholder="Category" className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none" />
-          <input type="url" placeholder="Image URL" className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none" />
+          
+          <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setFile(e.target.files[0])}
+          className="w-full px-4 py-2 border rounded-md bg-white/10 backdrop-blur-md"
+          required
+        />
+          
           <textarea placeholder="Description (optional)" rows="4" className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none"></textarea>
           <button className="w-full bg-black hover:bg-blue-800 text-white font-bold py-2 rounded-md">Upload</button>
         </form>

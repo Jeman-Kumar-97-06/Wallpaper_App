@@ -28,7 +28,7 @@ export default function Navbar() {
       {/* Right: Dropdown, Upload, Auth */}
       <div className="flex items-center gap-4">
         {/* Categories Dropdown */}
-        <div className="relative group">
+        {/* <div className="relative group">
           <button className="flex items-center gap-1 text-gray-700 hover:text-blue-500">
             Categories <ChevronDown size={18} />
           </button>
@@ -45,11 +45,21 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+        </div> */}
+        <div className="dropdown ">
+          <button className="dropbtn rounded-2xl p-2">Categories</button>
+          <div className="dropdown-content">
+            <a href="#">Nature</a>
+            <a href="#">Marvel</a>
+            <a href="#">DC</a>
+            <a href="#">Cars</a>
+            <a href='#'>Video Games</a>
+          </div>
         </div>
 
         {/* Upload Button */}
         <Link
-          to="/"
+          to="/upload"
           className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition"
         >
           Upload
