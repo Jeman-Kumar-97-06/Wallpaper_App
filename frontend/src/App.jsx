@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar"
 import { Routes, Route, BrowserRouter} from 'react-router-dom'
-import LandingPage from "./pages/LandingPage"
 import LoginPage from "./pages/LoginPage"
 import SignupPage from "./pages/SignupPage"
 import AboutPage from "./pages/About"
@@ -11,8 +10,7 @@ function App() {
   return (<>
   <BrowserRouter>
     <Routes>
-      <Route exact path='/lp2' element={<LandingPage2/>}/>
-      <Route exact path='/' element={<LandingPage/>}/>
+      <Route exact path='/' element={<LandingPage2/>}/>
       <Route exact path="/login" element={<LoginPage/>}/>
       <Route exact path='/signup' element={<SignupPage/>}/>
       <Route exact path='/about' element={<AboutPage/>}/>

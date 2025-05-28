@@ -23,18 +23,18 @@ export default function LandingPage2() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-blue-50">
+    <div className="min-h-screen flex flex-col bg-conic/decreasing from-violet-700 via-lime-300 to-violet-700">
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-6 py-4 shadow-md bg-white z-10 relative">
+      {/* <nav className="flex justify-between items-center px-6 py-4 shadow-md bg-white z-10 relative">
         <h1 className="text-2xl font-bold text-blue-600">Wallpaperz</h1>
         <div className="space-x-4">
           <Link to="/upload" className="text-gray-700 hover:text-blue-500">Upload</Link>
           <Link to="/login" className="text-gray-700 hover:text-blue-500">Login</Link>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Hero Section with focused slideshow */}
-      <div className="mt-10 relative flex flex-col items-center justify-center text-center px-4 py-20">
+      <div className="mt-15 relative flex flex-col items-center justify-center text-center px-4 py-20">
         <div className="flex items-center justify-center gap-4 h-[400px] z-0">
           {[getIndex(-1), currentIndex, getIndex(1)].map((i, idx) => (
             <img
@@ -51,13 +51,14 @@ export default function LandingPage2() {
         </div>
 
         {/* Hero Text */}
-        <h2 className="text-4xl z-10 sm:text-5xl font-extrabold text-orange-500 mt-3 mb-4">Discover & Share Stunning Wallpapers</h2>
-        <p className="text-lg z-10 font-bold text-orange-500 mb-8">Browse, upload, and download stunning mobile wallpapers — all in one place.</p>
-        <Link to="/explore" className="bg-blue-600 text-white px-6 py-3 rounded-full text-lg hover:bg-blue-700 transition">Explore Wallpapers</Link>
+        <h2 className="discov text-shadow-lg text-4xl z-10 sm:text-5xl font-extrabold text-[white] mt-3 mb-4">Discover & Share Stunning Wallpapers</h2>
+        <p className="text-shadow-lg text-lg z-10 font-bold text-white mb-8">Browse, upload, and download stunning mobile wallpapers — all in one place.</p>
+        
+        <Link to="/login" className="bg-black text-white font-bold px-6 py-3 rounded-full text-lg hover:bg-blue-800 transition">Explore Wallpapers</Link>
       </div>
 
       {/* Footer */}
-      <footer className="mt-auto bg-white text-center py-3 text-sm text-gray-500">
+      <footer className="mt-auto bg-white text-center py-3 text-sm text-black font-bold">
         &copy; {new Date().getFullYear()} Wallpaperz. All rights reserved.
       </footer>
     </div>
