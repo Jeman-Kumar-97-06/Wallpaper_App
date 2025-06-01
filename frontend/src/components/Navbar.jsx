@@ -10,9 +10,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full bg-conic/decreasing from-violet-700 via-lime-300 to-violet-700 shadow-md px-4 py-3 flex items-center justify-between">
+    <nav className="w-full bg-conic/increasing from-violet-700 via-lime-300 to-violet-700 shadow-md px-4 py-3 flex items-center justify-between">
       {/* Left: Logo */}
-      <div className="text-2xl font-bold discov text-white">
+      <div className="text-2xl font-bold discov text-black">
         <Link to="/">Wallpaperz</Link>
       </div>
 
@@ -21,7 +21,7 @@ export default function Navbar() {
         <input
           type="text"
           placeholder="Search wallpapers..."
-          className="w-full border rounded-full px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="bg-white w-full border rounded-full px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
 
@@ -47,7 +47,7 @@ export default function Navbar() {
           </ul>
         </div> */}
         <div className="dropdown ">
-          <button className="dropbtn rounded-2xl p-2">Categories</button>
+          <button className="dropbtn rounded-2xl p-2 text-black font-bold">Categories</button>
           <div className="dropdown-content">
             <a href="#">Nature</a>
             <a href="#">Marvel</a>
@@ -60,7 +60,7 @@ export default function Navbar() {
         {/* Upload Button */}
         <Link
           to="/upload"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition"
+          className="bg-blue-500 hover:bg-blue-600 text-black font-bold px-4 py-2 rounded-full transition"
         >
           Upload
         </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
         {/* Login/Logout Button */}
         <button
           onClick={handleLoginLogout}
-          className="text-sm text-gray-700 hover:text-blue-500"
+          className="text-sm text-gray-700 hover:text-blue-500 font-bold"
         >
           {isLoggedIn ? "Logout" : "Login"}
         </button>
