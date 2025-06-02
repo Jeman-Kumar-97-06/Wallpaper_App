@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import { useThemeContext } from '../hooks/useThemeContext';
 
 // Placeholder wallpaper data - In a real app, you'd fetch this from an API
 const wallpapers = [
@@ -21,14 +22,15 @@ const wallpapers = [
 // }));
 
 const HomePage = () => {
+  const {theme} = useThemeContext();
   return (
-    <div className="min-h-screen bg-white text-gray-900 dark:text-gray-100 font-inter p-4 sm:p-6 lg:p-8">
+    <div className={`${theme === 'light' ? 'light' : 'dark'} mainshit min-h-screen dark:bg-gray-900 bg-white font-inter p-4 sm:p-6 lg:p-8`}>
       {/* Header */}
       <header className="mb-8 text-center">
-        <h1 className="text-4xl sm:text-5xl discov font-extrabold text-black mb-2">
+        <h1 className="text-4xl sm:text-5xl discov font-extrabold dark:text-white text-black mb-2">
           Explore Wallpapers
         </h1>
-        <p className="text-lg sm:text-xl text-black">
+        <p className="text-lg sm:text-xl dark:text-white text-black">
           A curated collection of stunning wallpapers for your device.
         </p>
       </header>

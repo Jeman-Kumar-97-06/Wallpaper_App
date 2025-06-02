@@ -1,13 +1,29 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useThemeContext } from "../hooks/useThemeContext";
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  const {theme,dispatch} = useThemeContext();
+
+  let [isDark,setIsDark] = useState(true);
 
   const handleLoginLogout = () => {
     setIsLoggedIn(!isLoggedIn);
   };
+
+  const handleThemechange = (e) => {
+      if (isDark) {
+        setIsDark(false)
+        dispatch({type:"LIGHT"})
+      }
+      else if (!isDark){
+        setIsDark(true)
+        dispatch({type:"DARK"})
+      }
+  }
 
   return (
     <nav className="w-full bg-conic/increasing from-violet-700 via-lime-300 to-violet-700 shadow-md px-4 py-3 flex items-center justify-between">
@@ -24,6 +40,8 @@ export default function Navbar() {
           className="bg-white w-full border rounded-full px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
+
+
 
       {/* Right: Dropdown, Upload, Auth */}
       <div className="flex items-center gap-4">
@@ -46,6 +64,11 @@ export default function Navbar() {
             ))}
           </ul>
         </div> */}
+
+        <button className="cursor-pointer ">
+          <img onClick={e=>{handleThemechange()}} src={isDark ? "/dark-icon.png" : "/light-icon.png"} alt="theme icon" />
+        </button>
+
         <div className="dropdown ">
           <button className="dropbtn rounded-2xl p-2 text-black font-bold">Categories</button>
           <div className="dropdown-content">
