@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {v4 as uuidv4} from 'uuid';
 
 export default function LandingPage() {
   const images = [
@@ -8,6 +9,14 @@ export default function LandingPage() {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdOi7FVB3avk8GMEuTOAI3Ty9VSVV0JTgXw&s",
     "https://images.unsplash.com/photo-1500817487388-039e623edc21?fm=jpg&q=60&w=3000",
   ];
+
+  useEffect(()=>{
+    let sessionToken = localStorage.getItem('session_token');
+    if (!sessionToken) {
+      sessionToken = uuidv4();
+      localStorage.setItem('session_token',sessionToken);
+    }
+  },[])
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

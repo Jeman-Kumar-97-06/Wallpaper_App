@@ -1,4 +1,4 @@
-import {createContext, useReducer} from 'react';
+import {createContext, useEffect, useReducer} from 'react';
 
 export const ThemeContext = createContext();
 
@@ -15,6 +15,9 @@ export const themeReducer = (state,action) => {
 
 export const ThemeContextProvider = ({children}) => {
     const [state,dispatch] = useReducer(themeReducer,{theme:'light'});
+    useEffect(()=>{
+        
+    },[])
     return (
         <ThemeContext.Provider value={{...state,dispatch}}>
             {children}
