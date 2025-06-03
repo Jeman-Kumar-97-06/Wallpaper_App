@@ -16,7 +16,13 @@ export const themeReducer = (state,action) => {
 export const ThemeContextProvider = ({children}) => {
     const [state,dispatch] = useReducer(themeReducer,{theme:'light'});
     useEffect(()=>{
-        
+        const them = JSON.parse(localStorage.getItem('theme'));
+        if (them=='light') {
+            dispatch({type:"LIGHT"});
+        }
+        if (them=='dark') {
+            dispatch({type:"DARK"});
+        }
     },[])
     return (
         <ThemeContext.Provider value={{...state,dispatch}}>

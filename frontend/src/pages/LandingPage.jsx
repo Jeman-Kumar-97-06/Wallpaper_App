@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {v4 as uuidv4} from 'uuid';
+import { useThemeContext } from "../hooks/useThemeContext";
 
 export default function LandingPage() {
   const images = [
@@ -10,13 +11,17 @@ export default function LandingPage() {
     "https://images.unsplash.com/photo-1500817487388-039e623edc21?fm=jpg&q=60&w=3000",
   ];
 
+  const {theme} = useThemeContext();
+
   useEffect(()=>{
-    let sessionToken = localStorage.getItem('session_token');
+
+    let sessionToken = localStorage.getItem('theme');
+    
     if (!sessionToken) {
-      sessionToken = uuidv4();
-      localStorage.setItem('session_token',sessionToken);
+      sessionToken = theme;
+      localStorage.setItem('theme',sessionToken);
     }
-  },[])
+  },[theme])
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
