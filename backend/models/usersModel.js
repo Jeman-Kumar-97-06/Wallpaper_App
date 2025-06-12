@@ -9,7 +9,7 @@ const userSchema = new Schema({
     password : {type:String,required:true},
     phone : {type:String,required:false},
     pincode : {type:String,required:false},
-    address : {typs:String,required:false}
+    address : {type:String,required:false}
 });
 
 userSchema.statics.signup = async function(name,email,password) {

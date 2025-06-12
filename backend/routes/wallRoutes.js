@@ -4,6 +4,7 @@ const router  = express.Router();
 const fs      = require('fs');
 const path    = require('path');
 const Wall    = require('../models/wallModel');
+const cloudinary = require('cloudinary');
 
 const uploadDir = path.join(__dirname,'uploads');
 
