@@ -6,4 +6,4 @@ const wallSchema = new Schema({
     user_id:{type:String,required:true}
 });
 
-module.exports = {wallSchema};
+module.exports = mongoose.model('wall_pi',wallSchema);
