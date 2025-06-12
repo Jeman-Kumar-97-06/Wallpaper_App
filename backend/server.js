@@ -13,6 +13,7 @@ app.use(cors());
 
 app.use('/uploads',express.static(path.join(__dirname,'uploads')));
 app.use('/api/users',uRts);
+app.use('/api/walls',wRts);
 
 
 mongoose.connect(process.env.MONGOURL).then(()=>{

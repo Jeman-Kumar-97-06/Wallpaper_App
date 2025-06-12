@@ -20,7 +20,7 @@ export default function LoginPage() {
           <input type="email" placeholder="Email" className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray/80 focus:outline-none" />
           <input type="password" placeholder="Password" className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray/80 focus:outline-none" />
           <button className="w-full bg-black hover:bg-blue-800 text-white py-2 rounded-md">Login</button>
-        </form>
+        </form><br/>
         <GoogleLoginButton/>
         <p className="text-sm text-black mt-4 text-center">
           Don't have an account? <Link to="/signup" className="underline text-blue-700">Sign Up</Link>

@@ -3,6 +3,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 export const GoogleLoginButton = () => {
   const {dispatch} = useAuthContext();
+
   //If success do the following shit : 
   const handleSuccess = async (response) => {
     //Try sending a post request with credential as JSON body:
@@ -23,7 +24,7 @@ export const GoogleLoginButton = () => {
       console.error(err);
     }
   };
-
+  //If there's an error do the following shit:
   const handleError = () => {
     console.log('Google login failed');
   };
