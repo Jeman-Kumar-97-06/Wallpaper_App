@@ -1,5 +1,6 @@
 // 📄 SignupPage.jsx
 import { Link,useNavigate } from "react-router-dom";
+import { GoogleLoginButton } from "../components/GoogleLoginButton";
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -13,7 +14,8 @@ export default function SignupPage() {
           <input type="email" placeholder="Email" className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray/80 focus:outline-none" />
           <input type="password" placeholder="Password" className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray/80 focus:outline-none" />
           <button className="w-full bg-black hover:bg-blue-800 text-white py-2 rounded-md">Sign Up</button>
-        </form>
+        </form><br/>
+        <GoogleLoginButton/>
         <p className="text-sm text-black mt-4 text-center">
           Already have an account? <Link to="/login" className="underline text-blue-700">Login</Link>
         </p>
