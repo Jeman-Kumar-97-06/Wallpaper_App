@@ -13,6 +13,33 @@ export default function UploadWallpaperForm() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) {
+      setError("You must be logged in!");
+      return;
+    }
+    //Select the file that user uploaded:
+    const fileInput = document.querySelector("#wall_pic_yo").files[0];
+    //Check if the file is of jpeg or jpg or png format:(only those are allowed):
+    if (fileInput && fileInput.type !== 'image/jpeg' && fileInput.type !== 'image/jpg' && fileInput.type !== 'image/png') {
+      alert("Only JPEG/JPG/PNG images are allowed 😭");
+      return;
+    }
+    //Now we send the booty home:
+    const formData = new FormData();
+    formData.append('wall_pic',fileInput);
+    const response = await fetch('http://localhost:4000/api/walls/',{
+      method:'POST',
+      body : formData,
+      headers : {"Authorization":`Bearer ${user.token}`}
+    });
+    const json = await response.json();
+    if (!response.ok){
+      setError(json.error);
+    }
+    if (response.ok) {
+      setError(null);
+      dispatch({type:"UPLOADWALLS",paylod:json});
+    }
   }
 
   return (
@@ -26,6 +53,7 @@ export default function UploadWallpaperForm() {
           
           <input
           type="file"
+          id='wall_pic_yo'
           accept="image/*"
           onChange={(e) => setFile(e.target.files[0])}
           className="w-full px-4 py-2 border rounded-md bg-white/10 backdrop-blur-md"

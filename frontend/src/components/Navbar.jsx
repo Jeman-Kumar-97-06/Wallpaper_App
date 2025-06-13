@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useThemeContext } from "../hooks/useThemeContext";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogout } from "../hooks/useLogout";
 
 export default function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {user} = useAuthContext();
+  const {logout} = useLogout();
   
   const {theme,dispatch} = useThemeContext();
 
   let [isDark,setIsDark] = useState(true);
 
-  const handleLoginLogout = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
 
   const handleThemechange = (e) => {
       if (isDark) {
@@ -24,7 +24,6 @@ export default function Navbar() {
         dispatch({type:"DARK"})
       }
   }
-
   return (
     <nav className="w-full bg-conic/increasing from-violet-700 via-lime-300 to-violet-700 shadow-md px-4 py-3 flex items-center justify-between">
       {/* Left: Logo */}
@@ -89,12 +88,21 @@ export default function Navbar() {
         </Link>
 
         {/* Login/Logout Button */}
-        <button
-          onClick={handleLoginLogout}
-          className="text-sm text-gray-700 hover:text-blue-500 font-bold"
-        >
-          {isLoggedIn ? "Logout" : "Login"}
-        </button>
+        <div>
+          {user ? <>
+                    <button
+                      onClick={logout()}
+                      className="text-sm text-gray-700 hover:text-blue-500 font-bold"
+                    >
+                      Logout
+                    </button>
+                    <>{user._doc}</>
+                  </> : <>
+                          <button>
+                            Login
+                          </button>
+                        </>}
+        </div>
       </div>
     </nav>
   );

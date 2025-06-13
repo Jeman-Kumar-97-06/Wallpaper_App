@@ -1,5 +1,5 @@
 import { useAuthContext } from "./useAuthContext";
-import {useWallContext} from './userWallContext';
+import {useWallContext} from './useWallContext';
 
 export const useLogout = () => {
     const {dispatch} = useAuthContext();
