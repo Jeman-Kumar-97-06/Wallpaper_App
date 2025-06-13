@@ -10,18 +10,18 @@ import { useAuthContext } from "./hooks/useAuthContext"
 
 function App() {
   const {user} = useAuthContext();
-  console.log(user)
-  return (<>
-  <BrowserRouter>
-    <Routes>
-      <Route exact path='/home' element={!user ? <Navigate to='/login'/> : <><Navbar/><HomePage/></>}/>
-      <Route exact path='/' element={user ? <Navigate to='/home'/> : <LandingPage2/>}/>
-      <Route exact path="/login" element={user ? <Navigate to='/'/> : <LoginPage/>}/>
-      <Route exact path='/signup' element={user ? <Navigate to='/'/> : <SignupPage/>}/>
-      <Route exact path='/about' element={<AboutPage/>}/>
-      <Route exact path='/upload' element={user ? <UploadWallpaperForm/> : <Navigate to='/login'/>}/>
-    </Routes>
-  </BrowserRouter>
+  return (
+  <>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path='/home' element={!user ? <LoginPage/> : <><Navbar/><HomePage/></>}/>
+        <Route exact path='/' element={user ? <><Navbar/><HomePage/></> : <LandingPage2/>}/>
+        <Route exact path="/login" element={user ? <><Navbar/><HomePage/></> : <LoginPage/>}/>
+        <Route exact path='/signup' element={user ? <><Navbar/><HomePage/></> : <SignupPage/>}/>
+        <Route exact path='/about' element={<AboutPage/>}/>
+        <Route exact path='/upload' element={user ? <UploadWallpaperForm/> : <Navigate to='/login'/>}/>
+      </Routes>
+    </BrowserRouter>
   </>)
 }
 

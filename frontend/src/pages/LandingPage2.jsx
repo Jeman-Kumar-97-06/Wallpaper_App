@@ -23,7 +23,6 @@ export default function LandingPage2() {
   }, [images.length]);
 
   const getIndex = (offset) => {
-    console.log((currentIndex + offset + images.length) % images.length)
     return (currentIndex + offset + images.length) % images.length;
   };
 

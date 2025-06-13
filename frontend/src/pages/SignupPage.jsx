@@ -6,20 +6,19 @@ import {useSignup} from '../hooks/useSignup';
 
 
 export default function SignupPage() {
-
+  
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
 
   const {signup,error,isloading} = useSignup();
-
+  
   const handleSignup = async (e) => {
     e.preventDefault();
     await signup(name,email,password);
   }
 
   const navigate = useNavigate();
-  
   return (
     <div className="min-h-screen flex items-center justify-center bg-cover bg-conic/decreasing from-violet-700 via-lime-300 to-violet-700 bg-center bg-fixed">
       <div className="bg-white/20 backdrop-blur-md p-8 rounded-xl shadow-lg w-full max-w-md">
