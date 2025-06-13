@@ -1,7 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import {useWallContext} from '../hooks/useWallContext';
+import {useAuthContext} from '../hooks/useAuthContext';
+
 // UploadWallpaperForm.jsx
 export default function UploadWallpaperForm() {
+  const [error,setError] = useState(null);
+  const {dispatch}       = useWallContext();
+  const {user}           = useAuthContext();
+
   const navigate = useNavigate();
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  }
+
   return (
     <div className="min-h-screen bg-conic/decreasing from-violet-700 via-lime-300 to-violet-700 text-black flex items-center justify-center py-12 px-4">
       <div className="w-full max-w-lg bg-white/10 backdrop-blur-md p-8 rounded-xl">
