@@ -15,12 +15,10 @@ export const GoogleLoginButton = () => {
       });
       //After sending the POST request, you receive response:
       const data = await res.json();
-      console.log(data._doc)
       //Now store the user data received from server on the client's localStorage:
-      localStorage.setItem('wallpp_user',JSON.stringify(data));
+      localStorage.setItem('wallpp_user',JSON.stringify(data._doc));
       //Dispatch the login action to update state globally:
       dispatch({type:"LOGIN",payload:data._doc});
-      console.log("Dispatched sucessfully")
     } catch (err) {
       console.error(err);
     }

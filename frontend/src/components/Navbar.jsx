@@ -91,7 +91,7 @@ export default function Navbar() {
         <div>
           {user ? <>
                     <button
-                      onClick={logout()}
+                      onClick={logout}
                       className="text-sm text-gray-700 hover:text-blue-500 font-bold"
                     >
                       Logout
