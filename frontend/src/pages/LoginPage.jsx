@@ -15,6 +15,7 @@ export default function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     await login(name,password);
+    console.log("done")
   }
 
   const navigate = useNavigate();
@@ -28,8 +29,8 @@ export default function LoginPage() {
           <input
            onChange={e=>{setName(e.target.value)}}
            value={name}
-           type="email" 
-           placeholder="Email" 
+           type="text" 
+           placeholder="Name" 
            className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray/80 focus:outline-none" 
           />
           <input

@@ -63,7 +63,7 @@ export default function LandingPage2() {
 
       {/* Footer */}
       <footer className="mt-auto bg-white text-center py-3 text-sm text-black font-bold">
-        &copy; {new Date().getFullYear()} Wallpaperz. All rights reserved.
+        &copy; {new Date().getFullYear()} Backgroundz. All rights reserved.
       </footer>
     </div>
   );

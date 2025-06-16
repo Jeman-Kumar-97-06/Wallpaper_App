@@ -14,7 +14,7 @@ export const wallReducer = (state,action) => {
 }
 
 export const WallContextProvider = ({children}) => {
-    const [state,dispatch] = useReducer(wallReducer,{walls:null});
+    const [state,dispatch] = useReducer(wallReducer,{walls:[]});
     return (
         <WallContext.Provider value={{...state,dispatch}}>
             {children}

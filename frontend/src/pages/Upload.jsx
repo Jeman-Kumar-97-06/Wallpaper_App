@@ -8,6 +8,9 @@ export default function UploadWallpaperForm() {
   const [error,setError] = useState(null);
   const {dispatch}       = useWallContext();
   const {user}           = useAuthContext();
+  const [title,setTitle] = useState('');
+  const [category,setCategory] = useState('');
+  const [description,setDescription] = useState('');
 
   const navigate = useNavigate();
   
@@ -27,6 +30,9 @@ export default function UploadWallpaperForm() {
     //Now we send the booty home:
     const formData = new FormData();
     formData.append('wall_pic',fileInput);
+    formData.append('title',title);
+    formData.append("category",category);
+    formData.append("description",description);
     const response = await fetch('http://localhost:4000/api/walls/',{
       method:'POST',
       body : formData,
@@ -47,9 +53,19 @@ export default function UploadWallpaperForm() {
       <div className="w-full max-w-lg bg-white/10 backdrop-blur-md p-8 rounded-xl">
         <button onClick={() => navigate('/')} className="absolute top-4 left-4 text-black underline">← Back</button>
         <h2 className="text-2xl font-bold mb-6 text-center discov">Upload New Wallpaper</h2>
-        <form className="space-y-4">
-          <input type="text" placeholder="Title" className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none" />
-          <input type="text" placeholder="Category" className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none" />
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <input
+           type="text"
+           value={title}
+           onChange={e=>{setTitle(e.target.value)}}
+           placeholder="Title"
+           className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none" />
+          <input
+           type="text" 
+           value={category}
+           onChange={e=>{setCategory(e.target.value)}}
+           placeholder="Category" 
+           className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none" />
           
           <input
           type="file"
@@ -60,7 +76,12 @@ export default function UploadWallpaperForm() {
           required
         />
           
-          <textarea placeholder="Description (optional)" rows="4" className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none"></textarea>
+          <textarea
+           value={description}
+           onChange={e=>{setDescription(e.target.value)}}
+           placeholder="Description (optional)" 
+           rows="4" 
+           className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none"></textarea>
           <button className="w-full bg-black hover:bg-blue-800 text-white font-bold py-2 rounded-md">Upload</button>
         </form>
       </div>

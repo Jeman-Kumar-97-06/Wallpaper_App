@@ -19,7 +19,7 @@ export const useLogin = () => {
             setIsloading(false);
             setError(json.error);
         }
-        if (resp.ok) {
+        else if (resp.ok) {
             localStorage.setItem('wallpp_user',JSON.stringify(json));
             dispatch({type:"LOGIN",payload:json});
             setIsloading(false);

@@ -17,7 +17,8 @@ export const useSignup = () => {
             setError(json.error);
         }
         if (resp.ok) {
-            localStorage.setItem('wallpp_user',JSON.stringify(json));
+            console.log(json._doc)
+            localStorage.setItem('wallpp_user',JSON.stringify(json._doc));
             dispatch({type:"LOGIN",payload:json});
             setIsloading(false);
         }

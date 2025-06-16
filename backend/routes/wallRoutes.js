@@ -55,7 +55,8 @@ router.post('/',(req,res,next) => {
             return res.status(400).json({error:err.message});
         }
         console.log('File uploaded: ',req.file);
-        console.log("Request body:",req.body);
+        console.log("Request body:",req.body.title);
+
         next();
     })
 },async (req,res) => {
@@ -66,14 +67,20 @@ router.post('/',(req,res,next) => {
         console.log("File received: ",req.file.path);
         //Uploading to cloudinary:
         const uploadResult = await cloudinary.uploader.upload(req.file.path);
+        console.log(uploadResult)
         //Remove the file as soon as it is uploaded to cloudinary : 
-        fs.unlikeSync(req.file.path)
+        fs.unlinkSync(req.file.path)
+        console.log("success")
         //Send the Image URL to client : 
         try {
             user_id = req.user._id;
-            const new_wall = await Wall.create({wall:uploadResult.secure_url,user_id:user_id});
+            console.log("user_id is: ",user_id)
+            const new_wall = await Wall.create({title:req.body.title,category:req.body.category,description:req.body.description,wall:uploadResult.secure_url,user_id:user_id});
+            console.log(new_wall)
             res.status(200).json(new_wall);
         } catch (err) {
+            console.log("Aah shit")
+            console.log(err)
             res.status(404).json({error:`${err.message}`});
         }
     } catch (error) {

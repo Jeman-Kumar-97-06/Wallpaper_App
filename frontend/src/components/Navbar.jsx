@@ -12,8 +12,7 @@ export default function Navbar() {
   const {theme,dispatch} = useThemeContext();
 
   let [isDark,setIsDark] = useState(true);
-
-
+  
   const handleThemechange = (e) => {
       if (isDark) {
         setIsDark(false)
@@ -28,7 +27,7 @@ export default function Navbar() {
     <nav className="w-full bg-conic/increasing from-violet-700 via-lime-300 to-violet-700 shadow-md px-4 py-3 flex items-center justify-between">
       {/* Left: Logo */}
       <div className="text-2xl font-bold discov text-black">
-        <Link to="/">Wallpaperz</Link>
+        <Link to="/">Backgroundz</Link>
       </div>
 
       {/* Center: Search bar */}
@@ -90,13 +89,13 @@ export default function Navbar() {
         {/* Login/Logout Button */}
         <div>
           {user ? <>
+                     <span className="px-4 py-2">{user._doc.name}</span>
                     <button
                       onClick={logout}
                       className="text-sm text-gray-700 hover:text-blue-500 font-bold"
                     >
                       Logout
                     </button>
-                    <>{user._doc}</>
                   </> : <>
                           <button>
                             Login
