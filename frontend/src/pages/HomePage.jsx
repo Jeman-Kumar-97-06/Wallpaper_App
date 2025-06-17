@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { useThemeContext } from '../hooks/useThemeContext';
+import { useWallContext } from '../hooks/useWallContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 // Placeholder wallpaper data - In a real app, you'd fetch this from an API
 const wallpapers = [
@@ -22,7 +24,22 @@ const wallpapers = [
 // }));
 
 const HomePage = () => {
+  const {walls,dispatch} = useWallContext();
   const {theme} = useThemeContext();
+  const {user}  = useAuthContext();
+  useEffect(()=>{
+    const fetchAllWalls = async () => {
+      const resp = await fetch('http://localhost:4000/api/walls',{headers:{"Authorization":`Bearer ${user.token}`}});
+      const wap  = await resp.json();
+      if (resp.ok) {
+        dispatch({type:"SETWALLS",payload:wap})
+      }
+    }
+    if (user) {
+      fetchAllWalls();
+    }
+  },[dispatch,user])
+
   return (
     <div className={`${theme === 'light' ? 'light' : 'dark'} mainshit min-h-screen dark:bg-gray-700 bg-white font-inter p-4 sm:p-6 lg:p-8`}>
       {/* Header */}
@@ -37,14 +54,15 @@ const HomePage = () => {
 
       {/* Wallpapers Grid */}
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-x-2 gap-y-6">
-        {wallpapers.map((wallpaper) => (
+        {!walls && <p>No Wallpapers yet</p>}
+        {walls && walls.map((wallpaper) => (
           <div
             key={wallpaper.id}
             className="w-63 h-112 group relative bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:-translate-y-1"
           >
             {/* Wallpaper Image */}
             <img
-              src={wallpaper.url}
+              src={wallpaper.wall}
               alt={wallpaper.title}
               className="w-63 h-112 object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-500"
               onError={(e) => {
@@ -60,7 +78,7 @@ const HomePage = () => {
                   {wallpaper.title}
                 </h3>
                 <p className='text-white italic mb-1 group-hover:translate-y-0 translate-y-full transition-transform duration-300 delay-130'>
-                    {"-- by jeman"}
+                    {`-- by ${wallpaper.user_id.name}`}
                 </p>
                 <p className="text-white font-bold text-sm group-hover:translate-y-0 translate-y-full transition-transform duration-300 delay-150">
                   {wallpaper.category}

@@ -44,7 +44,8 @@ export default function UploadWallpaperForm() {
     }
     if (response.ok) {
       setError(null);
-      dispatch({type:"UPLOADWALLS",paylod:json});
+      dispatch({type:"UPLOADWALLS",payload:json});
+      navigate('/home',{replace:true});
     }
   }
 
