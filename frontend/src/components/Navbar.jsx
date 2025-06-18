@@ -89,7 +89,7 @@ export default function Navbar() {
         {/* Login/Logout Button */}
         <div>
           {user ? <>
-                     <span className="px-4 py-2">{user.doc ? user._doc.name : user.name}</span>
+                     <span className="px-4 py-2">{user._doc ? user._doc.name : user.name}</span>
                     <button
                       onClick={logout}
                       className="text-sm text-gray-700 hover:text-blue-500 font-bold"
