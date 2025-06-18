@@ -9,7 +9,7 @@ export const useSignup = () => {
     const signup = async (name,email,password) => {
         setIsloading(true);
         setError(null);
-        const resp = await fetch('http://localhost:4000/api/users/signup',{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email,password})});
+        const resp = await fetch('https://wallpaperappbackend-production.up.railway.app/api/users/signup',{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email,password})});
         const json = await resp.json();
         console.log(json)
         if (!resp.ok) {

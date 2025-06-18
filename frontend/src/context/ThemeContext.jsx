@@ -17,7 +17,6 @@ export const ThemeContextProvider = ({children}) => {
     const [state,dispatch] = useReducer(themeReducer,{theme:'light'});
     useEffect(()=>{
         const them_e = localStorage.getItem('wall_theme');
-        console.log(them_e)
         if (them_e =='light') {
             dispatch({type:"LIGHT"});
         }
