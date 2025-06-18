@@ -38,12 +38,12 @@ const HomePage = () => {
       </header>
 
       {/* Wallpapers Grid */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-x-2 gap-y-6">
+      <section className="wall_grid grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-x-2 gap-y-6">
         {!walls && <p>No Wallpapers yet</p>}
         {walls && walls.map((wallpaper) => (
           <div
             key={wallpaper.id}
-            className="w-63 h-112 group relative bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:-translate-y-1"
+            className="wall_p_grid w-63 h-112 group relative bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:-translate-y-1"
           >
             {/* Wallpaper Image */}
             <img

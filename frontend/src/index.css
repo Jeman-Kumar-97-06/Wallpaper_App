@@ -57,3 +57,22 @@ body {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+
+@media (max-width:700px) {
+  .nav-full{
+      flex-direction: column;
+    }
+  .drop_and_shit{
+    flex-direction: column;
+  }
+  .sbar{
+    margin-top: 10px;
+  }
+
+  .wall_grid {
+    grid-column: 1;
+  }
+  .wall_p_grid {
+    margin: auto;
+  }
+}
