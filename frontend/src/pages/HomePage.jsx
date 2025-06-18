@@ -27,7 +27,8 @@ const HomePage = () => {
   const {walls,dispatch} = useWallContext();
   const {theme} = useThemeContext();
   const {user}  = useAuthContext();
-  console.log(user)
+
+
   useEffect(()=>{
     const fetchAllWalls = async () => {
       const resp = await fetch('http://localhost:4000/api/walls',{headers:{"Authorization":`Bearer ${user.token}`}});
@@ -81,15 +82,15 @@ const HomePage = () => {
                 <p className='text-white italic mb-1 group-hover:translate-y-0 translate-y-full transition-transform duration-300 delay-130'>
                     {`-- by ${wallpaper.user_id.name}`}
                 </p>
-                <p className="text-white font-bold text-sm group-hover:translate-y-0 translate-y-full transition-transform duration-300 delay-150">
+                <p className="text-white font-bold mb-1 text-sm group-hover:translate-y-0 translate-y-full transition-transform duration-300 delay-150">
                   {wallpaper.category}
                 </p>
-                <button
+                <a
                   className="cursor-pointer mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-full text-sm shadow-md transition-all duration-300 transform group-hover:scale-100 scale-0 group-hover:translate-y-0 translate-y-full delay-200"
-                  onClick={() => console.log(`Download ${wallpaper.title}`)}
+                  href={wallpaper.wall}
                 >
                   Download
-                </button>
+                </a>
               </div>
             </div>
           </div>
