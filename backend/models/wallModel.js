@@ -6,7 +6,7 @@ const wallSchema = new Schema({
     category    :{type:String,required:true},
     wall        :{type:String,required:true},
     user_id     :{type:Schema.Types.ObjectId,ref:"wallpiuser",required:true},
-    description :{type:String,required:true}
+    description :{type:String,required:false}
 });
 
 module.exports = mongoose.model('wall_pi',wallSchema);
