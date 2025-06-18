@@ -16,11 +16,12 @@ export const themeReducer = (state,action) => {
 export const ThemeContextProvider = ({children}) => {
     const [state,dispatch] = useReducer(themeReducer,{theme:'light'});
     useEffect(()=>{
-        const them = JSON.parse(localStorage.getItem('theme'));
-        if (them=='light') {
+        const them_e = localStorage.getItem('wall_theme');
+        console.log(them_e)
+        if (them_e =='light') {
             dispatch({type:"LIGHT"});
         }
-        if (them=='dark') {
+        if (them_e =='dark') {
             dispatch({type:"DARK"});
         }
     },[])

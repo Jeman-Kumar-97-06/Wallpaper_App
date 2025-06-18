@@ -17,10 +17,12 @@ export default function Navbar() {
       if (isDark) {
         setIsDark(false)
         dispatch({type:"LIGHT"})
+        localStorage.setItem('wall_theme','light')
       }
       else if (!isDark){
         setIsDark(true)
         dispatch({type:"DARK"})
+        localStorage.setItem('wall_theme','dark')
       }
   }
   return (
