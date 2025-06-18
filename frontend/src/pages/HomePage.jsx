@@ -27,6 +27,7 @@ const HomePage = () => {
   const {walls,dispatch} = useWallContext();
   const {theme} = useThemeContext();
   const {user}  = useAuthContext();
+  console.log(user)
   useEffect(()=>{
     const fetchAllWalls = async () => {
       const resp = await fetch('http://localhost:4000/api/walls',{headers:{"Authorization":`Bearer ${user.token}`}});
