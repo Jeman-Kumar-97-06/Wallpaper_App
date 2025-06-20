@@ -6,6 +6,7 @@ import {useAuthContext} from '../hooks/useAuthContext';
 // UploadWallpaperForm.jsx
 export default function UploadWallpaperForm() {
   const [error,setError] = useState(null);
+  const [load,setLoad]   = useState(null);
   const {dispatch}       = useWallContext();
   const {user}           = useAuthContext();
   const [title,setTitle] = useState('');
@@ -16,6 +17,7 @@ export default function UploadWallpaperForm() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoad(true);
     if (!user) {
       setError("You must be logged in!");
       return;
@@ -33,16 +35,18 @@ export default function UploadWallpaperForm() {
     formData.append('title',title);
     formData.append("category",category);
     formData.append("description",description);
-    const response = await fetch('http://localhost:4000/api/walls/',{
+    const response = await fetch('http://wallpaperappbackend-production.up.railway.app/api/walls/',{
       method:'POST',
       body : formData,
       headers : {"Authorization":`Bearer ${user.token}`}
     });
     const json = await response.json();
     if (!response.ok){
+      setLoad(false);
       setError(json.error);
     }
     if (response.ok) {
+      setLoad(false);
       setError(null);
       dispatch({type:"UPLOADWALLS",payload:json});
       navigate('/home',{replace:true});
@@ -83,7 +87,7 @@ export default function UploadWallpaperForm() {
            placeholder="Description (optional)" 
            rows="4" 
            className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none"></textarea>
-          <button className="w-full bg-black hover:bg-blue-800 text-white font-bold py-2 rounded-md">Upload</button>
+          <button className="w-full bg-black hover:bg-blue-800 text-white font-bold py-2 flex rounded-md items-center justify-center">{load ? <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>: "Upload"}</button>
         </form>
       </div>
     </div>
