@@ -88,6 +88,7 @@ export default function UploadWallpaperForm() {
            rows="4" 
            className="w-full px-4 py-2 rounded-md bg-white/30 placeholder-gray-600 focus:outline-none"></textarea>
           <button className="w-full bg-black hover:bg-blue-800 text-white font-bold py-2 flex rounded-md items-center justify-center">{load ? <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>: "Upload"}</button>
+          {error ? <span className='text-red-500'>{error}</span> : ""}
         </form>
       </div>
     </div>

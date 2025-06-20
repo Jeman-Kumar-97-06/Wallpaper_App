@@ -26,7 +26,7 @@ const HomePage = () => {
   },[dispatch,user])
 
   return (
-    <div className={`${theme === 'light' ? 'light' : 'dark'} mainshit min-h-screen dark:bg-gray-800 bg-white font-inter p-4 sm:p-6 lg:p-8`}>
+    <div className={`${theme === 'light' ? 'light' : 'dark'} mainshit min-h-screen dark:bg-black bg-white font-inter p-4 sm:p-6 lg:p-8`}>
       {/* Header */}
       <header className="mb-8 text-center">
         <h1 className="text-4xl sm:text-5xl discov font-extrabold dark:text-white text-black mb-2">
