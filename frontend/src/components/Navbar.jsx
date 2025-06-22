@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -9,10 +9,29 @@ import { useWallContext } from "../hooks/useWallContext";
 export default function Navbar() {
   const {user} = useAuthContext();
   const {logout} = useLogout();
-  const {walls} = useWallContext();
+  const {walls,allWalls,dispatch:wdispatch} = useWallContext();
   const {theme,dispatch} = useThemeContext();
 
+  const [query,setQuery] = useState('');
+  const cats = [...allWalls.map(x=>(x.category))];
+  const def_walls = (structuredClone(walls))
 
+  const handleEnterKey = () => {
+      const filtered = allWalls.filter(w => 
+        w.title.toLowerCase().includes(query.toLowerCase()) || 
+        w.category.toLowerCase().includes(query.toLowerCase())
+      );
+  wdispatch({ type: "SETFWALLS", payload: filtered });
+  }
+
+  const handleCategory = (e) => {
+    console.log(e.target.innerText)
+    const cat = e.target.innerText;
+    const filtered = allWalls.filter(w =>  
+        w.category.toLowerCase().includes(cat.toLowerCase())
+      );
+    wdispatch({ type: "SETFWALLS", payload: filtered });
+  }
 
   let [isDark,setIsDark] = useState(true);
   
@@ -38,8 +57,14 @@ export default function Navbar() {
       {/* Center: Search bar */}
       <div className="sbar flex-1 mx-4 max-w-xl">
         <input
+          onChange={e=>setQuery(e.target.value)}
+          value={query}
+          onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                  handleEnterKey()
+          }}}
           type="text"
-          placeholder="Search wallpapers..."
+          placeholder="Type anything & press Enter"
           className={`${theme === 'light' ? 'light' : 'dark'} dark:bg-black dark:text-white bg-white w-full border rounded-full px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400`}
         />
       </div>
@@ -57,8 +82,8 @@ export default function Navbar() {
           <div className="dropdown m-1">
               <button className="dropbtn rounded-2xl p-2 text-black font-bold">Categories</button>
               <div className="dropdown-content">
-                {walls.map(w=>(
-                  <a href="#">{w.category}</a>
+                {cats.map(w=>(
+                  <a onClick={e=>handleCategory(e)} href="#">{w}</a>
                 ))}
               </div>
           </div>

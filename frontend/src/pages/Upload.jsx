@@ -7,7 +7,7 @@ import {useAuthContext} from '../hooks/useAuthContext';
 export default function UploadWallpaperForm() {
   const [error,setError] = useState(null);
   const [load,setLoad]   = useState(null);
-  const {dispatch}       = useWallContext();
+  const {walls,allWalls,dispatch}       = useWallContext();
   const {user}           = useAuthContext();
   const [title,setTitle] = useState('');
   const [category,setCategory] = useState('');

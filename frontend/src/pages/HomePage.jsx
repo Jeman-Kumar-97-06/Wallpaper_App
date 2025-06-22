@@ -7,14 +7,14 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 
 const HomePage = () => {
-  const {walls,dispatch} = useWallContext();
+  const {walls,allWalls,dispatch} = useWallContext();
   const {theme} = useThemeContext();
   const {user}  = useAuthContext();
 
 
   useEffect(()=>{
     const fetchAllWalls = async () => {
-      const resp = await fetch('https://wallpaperappbackend-production.up.railway.app/api/walls',{headers:{"Authorization":`Bearer ${user.token}`}});
+      const resp = await fetch('https://wallpaperappbackend-production.up.railway.app/api/walls',{method:"GET",headers:{"Authorization":`Bearer ${user.token}`}});
       const wap  = await resp.json();
       if (resp.ok) {
         dispatch({type:"SETWALLS",payload:wap})
