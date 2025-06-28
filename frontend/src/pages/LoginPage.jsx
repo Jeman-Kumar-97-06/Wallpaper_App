@@ -24,7 +24,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-cover bg-conic/decreasing from-violet-700 via-lime-300 to-violet-700 bg-center bg-fixed">
       <div className="bg-white/20 backdrop-blur-md p-8 rounded-xl shadow-lg w-full max-w-md">
         <button onClick={() => navigate('/')} className="absolute top-4 left-4 text-black font-bold underline">← Back</button>
-        <h2 className="text-2xl font-bold text-black mb-6 text-center discov">Login to Wallpaperz</h2>
+        <h2 className="text-2xl font-bold text-black mb-6 text-center discov">Login to Backgroundz</h2>
         <form className="space-y-4" onSubmit={handleLogin}>
           <input
            onChange={e=>{setName(e.target.value)}}
