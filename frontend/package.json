@@ -1,5 +1,4 @@
 {
-  "proxy" : "https://wallpaperappbackend-production.up.railway.app",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
