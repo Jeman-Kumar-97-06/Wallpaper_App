@@ -18,7 +18,7 @@ app.use('/api/walls',wRts);
 
 //When deploying : 
 if (process.env.NODE_ENV === "production") {
-    const clientPath = path.join(__dirname,'../client/build');
+    const clientPath = path.join(__dirname,'../frontend/build');
     app.use(express.static(clientPath));
     app.get('*',(req,res)=>{
         res.sendFile(path.join(clientPath,'index.html'));
