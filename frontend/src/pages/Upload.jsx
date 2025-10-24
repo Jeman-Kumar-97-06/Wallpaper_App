@@ -35,7 +35,7 @@ export default function UploadWallpaperForm() {
     formData.append('title',title);
     formData.append("category",category);
     formData.append("description",description);
-    const response = await fetch('http://wallpaperappbackend-production.up.railway.app/api/walls/',{
+    const response = await fetch('/api/walls/',{
       method:'POST',
       body : formData,
       headers : {"Authorization":`Bearer ${user.token}`}
