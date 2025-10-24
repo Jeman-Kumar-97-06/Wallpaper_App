@@ -9,7 +9,7 @@ export const useLogin = () => {
     const login = async (name,password) => {
         setIsloading(true);
         setError(null);
-        const resp = await fetch('https://wallpaperappbackend-production.up.railway.app/api/users/login',{
+        const resp = await fetch('/api/users/login',{
             method:"POST",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify({name,password})

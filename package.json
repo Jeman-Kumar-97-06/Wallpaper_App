@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"npm run server",
-    "server":"cd backend && nodemon server.js",
-    "install-server":"cd backend && npm install",
-    "install-client":"cd frontend && npm install",
-    "build":"cd client && npm run build",
+    "start": "npm run server",
+    "server": "cd backend && nodemon server.js",
+    "install-server": "cd backend && npm install",
+    "install-client": "cd frontend && npm install",
+    "build": "cd client && npm run build",
     "postinstall": "npm run install-client && npm run install-server && npm run build",
-    "client":"cd frontend && npm run dev",
-    "dev":"concurrently \"npm run start\" \"npm run client\""
+    "client": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run start\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Jeman-Kumar-97-06/Wallpaper_App#readme",
   "dependencies": {
+    "@railway/cli": "^4.11.0",
     "concurrently": "^9.2.1"
   }
 }

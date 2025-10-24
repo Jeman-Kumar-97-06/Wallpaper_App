@@ -8,7 +8,7 @@ export const GoogleLoginButton = () => {
   const handleSuccess = async (response) => {
     //Try sending a post request with credential as JSON body:
     try {
-      const res = await fetch('https://wallpaperappbackend-production.up.railway.app/api/users/google-login', {
+      const res = await fetch('/api/users/google-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ credential: response.credential }),
