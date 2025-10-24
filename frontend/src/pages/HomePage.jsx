@@ -14,7 +14,7 @@ const HomePage = () => {
 
   useEffect(()=>{
     const fetchAllWalls = async () => {
-      const resp = await fetch('/api/walls',{method:"GET",headers:{"Authorization":`Bearer ${user.token}`}});
+      const resp = await fetch('http://localhost:4000/api/walls',{method:"GET",headers:{"Authorization":`Bearer ${user.token}`}});
       const wap  = await resp.json();
       if (resp.ok) {
         dispatch({type:"SETWALLS",payload:wap})

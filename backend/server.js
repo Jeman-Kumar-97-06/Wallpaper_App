@@ -1,4 +1,9 @@
+// require('dotenv').config();
+// const {fileURLToPath}
+//                = require("url");
+// import { fileURLToPath } from "url";
 require('dotenv').config();
+// const fileURLToPath = require('url');
 const cors     = require('cors');
 const express  = require('express') ;
 const mongoose = require('mongoose');
@@ -7,6 +12,10 @@ const path     = require('path');
 
 const uRts     = require('./routes/userRoutes');
 const wRts     = require('./routes/wallRoutes');
+
+// Needed for __dirname in ES Modules
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use(cors());
@@ -18,9 +27,9 @@ app.use('/api/walls',wRts);
 
 //When deploying : 
 if (process.env.NODE_ENV === "production") {
-    const clientPath = path.join(__dirname,'../frontend/build');
+    const clientPath = path.join(__dirname,'../frontend/dist');
     app.use(express.static(clientPath));
-    app.get('*',(req,res)=>{
+    app.get('/',(req,res)=>{
         res.sendFile(path.join(clientPath,'index.html'));
     })
 }
